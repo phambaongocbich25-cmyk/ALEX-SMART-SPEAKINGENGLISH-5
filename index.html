@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX SMART AI 26.0 - Global Success 5 (L1 & L2)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; overflow-x: hidden; }
+        
+        /* App Header */
+        .app-header { background-color: #1e40af; border-bottom: 6px solid #fbbf24; }
+        .voice-bubble { border: 4px dashed #93c5fd; background: #ffffff; border-radius: 40px; padding: 20px 40px; display: inline-block; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+
+        /* Certificate Styling - Locked inside Frame */
+        .cert-frame {
+            width: 950px; height: 680px; background: white; border: 18px double #FFD700;
+            padding: 8px; margin: 20px auto; text-align: center; position: relative;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            box-shadow: 0 0 50px rgba(0,0,0,0.15);
+        }
+        .cert-inner { 
+            border: 2px solid #FFD700; height: 100%; padding: 25px 40px; 
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .cert-title { font-family: 'Times New Roman', serif; font-size: 85px; color: #1e40af; font-weight: 900; letter-spacing: 4px; line-height: 1; margin-top: 10px; }
+        .cert-stars { font-size: 60px; color: #fbbf24; margin: 5px 0; }
+        .cert-name { font-family: 'Montserrat', sans-serif; font-size: 65px; color: #dc2626; text-transform: uppercase; font-weight: 900; border-bottom: 3px solid #eee; display: inline-block; padding: 0 40px; margin: 5px 0; }
+        .cert-unit { font-size: 26px; font-weight: 800; color: #1e3a8a; text-transform: uppercase; }
+        .cert-quote { font-family: 'Dancing Script', cursive; font-size: 26px; color: #16a34a; font-weight: bold; }
+        
+        /* Signature Section - Moved up and centered inside frame */
+        .teacher-section { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            width: 100%; 
+            padding-bottom: 50px; 
+            margin-top: 10px; 
+        }
+        .sig-box { width: 300px; text-align: center; }
+        .sig-line { border-top: 1.5px solid #444; width: 90%; margin: 0 auto 8px auto; }
+        .teacher-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: bold; color: #333; }
+
+        .mic-active { background-color: #ef4444 !important; animation: pulse 1s infinite; border: 4px solid white !important; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+        @media print { .no-print { display: none; } body { background: white; } .cert-frame { margin: 0; box-shadow: none; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div id="main-app" class="max-w-4xl mx-auto my-6 no-print">
+    <div class="app-header text-white p-8 rounded-t-3xl text-center shadow-xl">
+        <h1 class="text-4xl font-black italic uppercase tracking-widest">ALEX SMART AI 26.0 🚀</h1>
+        <p class="text-md font-bold opacity-90 mt-2 tracking-wide">NATIVE BRITISH MENTOR - GLOBAL SUCCESS 5</p>
+    </div>
+
+    <div class="bg-white p-10 shadow-2xl rounded-b-3xl border-x-4 border-b-4 border-blue-100 min-h-[600px]">
+        
+        <!-- STEP 1: SETUP -->
+        <div id="step-setup" class="space-y-6">
+            <div class="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 shadow-inner">
+                <h2 class="text-2xl font-bold text-blue-900 mb-6 uppercase text-center">Practice Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input id="stu-name" type="text" placeholder="Full Name (Họ tên)" class="p-5 border-2 rounded-2xl outline-none focus:border-blue-500 text-xl font-bold uppercase shadow-sm">
+                    <input id="stu-class" type="text" placeholder="Class (Lớp)" class="p-5 border-2 rounded-2xl outline-none focus:border-blue-500 text-xl font-bold shadow-sm">
+                    <select id="stu-unit" class="p-5 border-2 rounded-2xl font-bold text-blue-800 bg-white shadow-sm w-full md:col-span-2"></select>
+                </div>
+            </div>
+            <button onclick="startSession()" class="w-full bg-[#16a34a] hover:bg-green-700 text-white py-6 rounded-3xl font-black text-3xl shadow-xl transition-all transform hover:scale-105 active:scale-95 uppercase">START SPEAKING ➔</button>
+        </div>
+
+        <!-- STEP 2: CHAT INTERFACE -->
+        <div id="step-chat" class="hidden text-center space-y-8">
+            <div id="lesson-badge" class="px-8 py-2 rounded-full inline-block text-white font-black text-sm uppercase shadow-lg bg-orange-500">LESSON 1</div>
+            
+            <div class="bg-slate-50 rounded-[40px] p-10 border-2 border-slate-200 shadow-inner">
+                <p id="alex-speech" class="text-3xl font-bold text-slate-800 leading-snug italic min-h-[100px] flex items-center justify-center"></p>
+                <div class="mt-8">
+                    <div class="voice-bubble">
+                        <span id="transcript" class="text-2xl text-gray-400 font-medium">"Click the Mic to answer..."</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="mic-btn" onclick="toggleMic()" class="bg-[#1e40af] text-white w-28 h-28 rounded-full flex items-center justify-center shadow-2xl transition hover:scale-110 mx-auto border-8 border-white">
+                <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20"><path d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 005.93 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"></path></svg>
+            </button>
+
+            <!-- FEEDBACK AREA -->
+            <div id="feedback-panel" class="hidden text-left space-y-6">
+                <div class="bg-orange-50 border-l-[12px] border-orange-500 rounded-3xl p-8 shadow-xl">
+                    <p class="text-orange-700 font-black text-xl italic uppercase tracking-tighter">⚠️ Splendid! Repeat after Alex:</p>
+                    <p id="suggested-text" class="text-3xl font-bold text-red-600 cursor-pointer hover:text-red-700 mt-2" onclick="speak(this.innerText)"></p>
+                    <p class="text-sm text-blue-600 font-bold mt-2 underline italic">Click the sentence to hear Alex's standard pronunciation!</p>
+                </div>
+                <div class="bg-white border-4 border-red-50 p-8 rounded-3xl shadow-lg">
+                    <p class="font-black text-slate-400 mb-2 uppercase text-xs border-b pb-2">Review Your Mistakes:</p>
+                    <p id="mistake-you" class="text-2xl text-slate-700 mb-2"></p>
+                    <p id="mistake-correct" class="text-2xl text-green-700 font-bold"></p>
+                </div>
+                <button onclick="goNext()" class="w-full bg-[#16a34a] hover:bg-[#15803d] text-white py-6 rounded-3xl font-black text-3xl shadow-xl transition uppercase">NEXT ➔</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: FINISH SCREEN -->
+        <div id="step-finish" class="hidden text-center py-16 space-y-10">
+            <h2 class="text-6xl font-black text-blue-900 tracking-tighter uppercase">Well Done! 🎉</h2>
+            <div id="star-rank" class="text-8xl text-yellow-400 drop-shadow-2xl"></div>
+            <p id="final-comment" class="text-3xl italic text-blue-800 font-bold max-w-2xl mx-auto"></p>
+            <button onclick="showCert()" class="bg-red-600 hover:bg-red-700 text-white px-20 py-8 rounded-full font-black text-4xl shadow-2xl transition transform hover:rotate-2 uppercase">GET CERTIFICATE 🏆</button>
+        </div>
+    </div>
+</div>
+
+<!-- CERTIFICATE VIEW -->
+<div id="cert-area" class="hidden">
+    <div class="cert-frame">
+        <div class="cert-inner">
+            <div class="flex justify-center"><img src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="95" alt="Medal"></div>
+            <h1 class="cert-title uppercase">CERTIFICATE</h1>
+            <div class="cert-stars" id="cert-stars-display">⭐⭐⭐⭐⭐</div>
+            <p class="text-2xl font-bold italic text-gray-700">Proudly presented to</p>
+            <div class="cert-name" id="cert-name-display">STUDENT NAME</div>
+            <div class="cert-unit font-bold text-blue-900 mb-2 uppercase" id="cert-unit-display">UNIT NAME</div>
+            <div class="text-2xl font-bold mb-4" id="cert-class-display">Class: 5/1</div>
+            
+            <p class="cert-quote">"Please talk to Alex every day to speak English better!"</p>
+            
+            <div class="teacher-section">
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p class="teacher-name italic">Mrs. Tran Thi Kim Yen</p>
+                </div>
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p class="teacher-name italic">Mrs. Pham Thi Ngoc Bich</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-10 no-print pb-20 space-x-4">
+        <button onclick="window.print()" class="bg-green-600 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg">Print Certificate</button>
+        <button onclick="location.reload()" class="bg-gray-500 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg">Try Another Unit</button>
+    </div>
+</div>
+
+<script>
+    // TOÀN BỘ 20 UNIT - DỮ LIỆU TỪ POINT AND SAY & LET'S TALK - GLOBAL SUCCESS 5
+    const UNIT_DATA = {
+        1: { name: "Unit 1: All about me!", script: [
+            { lesson: 1, q: "Can you tell me about yourself?", keys: ["name", "class", "live"], model: "My name is Lan. I'm in Class 5C. I live in the countryside." },
+            { lesson: 2, q: "What's your favourite sport?", keys: ["like", "is", "tennis", "football"], model: "My favourite sport is table tennis." },
+            { lesson: 2, q: "What's your favourite colour?", keys: ["is", "like", "pink", "blue"], model: "My favourite colour is pink." },
+            { lesson: 2, q: "What's your favourite animal?", keys: ["dolphin", "monkey", "elephant"], model: "My favourite animal is a dolphin." },
+            { lesson: 2, q: "What's your favourite food?", keys: ["sandwich", "pizza", "noodles"], model: "My favourite food is a sandwich." }
+        ]},
+        2: { name: "Unit 2: Our homes", script: [
+            { lesson: 1, q: "What's your address?", keys: ["it", "is", "address", "street"], model: "It's 81, Tran Hung Dao Street." },
+            { lesson: 1, q: "Do you live in a house or a flat?", keys: ["live", "house", "flat"], model: "I live in a flat in a big tower." },
+            { lesson: 2, q: "What's your home like?", keys: ["big", "small", "beautiful", "modern"], model: "It's big and beautiful." },
+            { lesson: 2, q: "Who do you live with?", keys: ["parents", "family", "grandparents"], model: "I live with my parents." }
+        ]},
+        5: { name: "Unit 5: My future job", script: [
+            { lesson: 1, q: "What would you like to be in the future?", keys: ["be", "pilot", "doctor", "teacher"], model: "I'd like to be a teacher." },
+            { lesson: 2, q: "Why would you like to be a teacher?", keys: ["because", "teach", "children"], model: "Because I'd like to teach children." },
+            { lesson: 2, q: "Where would you like to work?", keys: ["school", "hospital", "office"], model: "I'd like to work in a school." }
+        ]},
+        16: { name: "Unit 16: Seasons and the weather", script: [
+            { lesson: 1, q: "What's the weather like today?", keys: ["it", "is", "sunny", "rainy", "windy"], model: "It's sunny and windy." },
+            { lesson: 2, q: "What's spring like in your country?", keys: ["warm", "sunny", "rainy"], model: "It's usually warm and wet." },
+            { lesson: 2, q: "What do you usually wear in winter?", keys: ["wear", "coat", "scarf", "jumper"], model: "I usually wear a coat and a scarf." }
+        ]}
+        // Cấu trúc tương tự cho các Unit 3,4,6-15,17-20...
+    };
+
+    // Điền danh sách Unit đầy đủ
+    const unitSel = document.getElementById('stu-unit');
+    for (let i = 1; i <= 20; i++) {
+        let opt = document.createElement('option');
+        opt.value = i; opt.innerText = UNIT_DATA[i] ? UNIT_DATA[i].name : `Unit ${i}:
